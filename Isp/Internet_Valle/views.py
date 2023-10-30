@@ -211,3 +211,85 @@ class PagoDetailView (DeleteView):
         context['titulo'] = "Pago"
         return context
 
+################### Detalle_Pago ###################
+
+class Detalle_PagoCreateView(CreateView):
+    model = Detalle_Pago
+    #form_class = FormularioDetalle_Pago
+   # success_url = reverse_lazy('detalle_pago:detalle_pago_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Alta de Detalle de Pago"
+        return context
+
+class Detalle_PagoUpdateView(UpdateView):
+    model = Detalle_Pago
+    #form_class = FormularioDetalle_Pago
+   # success_url = reverse_lazy('detalle_pago:detalle_pago_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar detalle de pago"
+        return context
+    
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.SUCCESS, 'detalle de pago modificada con éxito')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        print(form.non_field_errors())
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)
+
+class Detalle_PagoDetailView (DeleteView):
+    model = Detalle_Pago
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "detalle de pago"
+        return context
+   
+    
+
+################### adicionales ###################
+class adicionalesCreateView(CreateView):
+    model = adicionales
+    #form_class = Formularioadicionales
+   # success_url = reverse_lazy('adicionales:adicionales_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Alta de Adicional"
+        return context
+
+class adicionalesUpdateView(UpdateView):
+    model = adicionales
+    #form_class = Formularioadicionales
+   # success_url = reverse_lazy('adicionales:adicionales_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar adicional"
+        return context
+    
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.SUCCESS, 'adicional modificado con éxito')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        print(form.non_field_errors())
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)
+
+class adicionalesDetailView (DeleteView):
+    model = adicionales
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "detalle adicional"
+        return context
+   
+   
