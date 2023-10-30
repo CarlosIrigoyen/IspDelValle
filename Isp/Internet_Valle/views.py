@@ -133,3 +133,81 @@ class EquipoDetailView (DeleteView):
         context['titulo'] = "Equipo"
         return context
     
+ ################### Contrato ###################
+class ContratoCreateView(CreateView):
+    model = Contrato
+    #form_class = FormularioContrato
+   # success_url = reverse_lazy('contrato:contrato_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Alta de Contrato"
+        return context
+
+class ContratoUpdateView(UpdateView):
+    model = Contrato
+    #form_class = FormularioContrato
+   # success_url = reverse_lazy('contrato:contrato_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Contrato"
+        return context
+    
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.SUCCESS, 'Contrato modificada con éxito')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        print(form.non_field_errors())
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)
+
+class ContratoDetailView (DeleteView):
+    model = Contrato
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Contrato"
+        return context
+    
+################### Pago ###################
+class PagoCreateView(CreateView):
+    model = Pago
+    #form_class = FormularioPago
+   # success_url = reverse_lazy('pago:pago_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Alta de Pago"
+        return context
+
+class PagoUpdateView(UpdateView):
+    model = Pago
+    #form_class = FormularioPago
+   # success_url = reverse_lazy('pago:pago_crear')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar pago"
+        return context
+    
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.SUCCESS, 'pago modificada con éxito')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        print(form.non_field_errors())
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)
+
+class PagoDetailView (DeleteView):
+    model = Pago
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Pago"
+        return context
+
