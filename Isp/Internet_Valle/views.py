@@ -1,29 +1,25 @@
-from django.shortcuts import render
-from django.views.generic.list import ListView
+#from django.shortcuts import render
+#from django.views.generic.list import ListView
 from .models import *
 from .forms import *
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.template import loader
-from django.http import HttpResponse
-from datetime import datetime  
-from django.contrib import messages
+#from django.contrib import messages
 
-from django.urls import reverse_lazy
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, redirect
+
 # Create your views here.
 
 ################### CLIENTE ###################
 
 class ClienteCreateView(CreateView):
     model = Cliente
-    #form_class = FormularioCliente
+    template_name = 'cliente_form.html'
+    form_class = ClienteForm
    # success_url = reverse_lazy('cliente:cliente_crear')
 
-    def get_context_data(self, **kwargs):
+    '''def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Cliente"
-        return context
+        return context'''
 
 class ClienteUpdateView(UpdateView):
     model = Cliente
@@ -35,15 +31,15 @@ class ClienteUpdateView(UpdateView):
         context['titulo'] = "Modificar Cliente"
         return context
     
-    def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Cliente modificada con éxito')
+    '''def form_valid(self, form):
+        #messages.add_message(self.request, messages.SUCCESS, 'Cliente modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
-        return super().form_invalid(form)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)'''
 
 class ClienteDetailView (DeleteView):
     model = Cliente
@@ -76,13 +72,13 @@ class ServicioUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Servicio Cliente con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'Servicio Cliente con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
 class ServicioDetailView (DeleteView):
@@ -117,13 +113,13 @@ class EquipoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Equipo modificada con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'Equipo modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+       # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
 class EquipoDetailView (DeleteView):
@@ -156,13 +152,13 @@ class ContratoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Contrato modificada con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'Contrato modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
 class ContratoDetailView (DeleteView):
@@ -195,13 +191,13 @@ class PagoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'pago modificada con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'pago modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
 class PagoDetailView (DeleteView):
@@ -235,13 +231,13 @@ class Detalle_PagoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'detalle de pago modificada con éxito')
+        #messages.add_message(self.request, messages.SUCCESS, 'detalle de pago modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+       # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
 class Detalle_PagoDetailView (DeleteView):
@@ -276,13 +272,13 @@ class adicionalesUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'adicional modificado con éxito')
+        #messages.add_message(self.request, messages.SUCCESS, 'adicional modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
 class adicionalesDetailView (DeleteView):

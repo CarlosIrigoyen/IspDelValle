@@ -9,7 +9,7 @@ def main(request):
     return render (request,"main.html")
 
 class LoginFormView(LoginView):
-    template_name = 'form_base.html'
+    template_name = 'login.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
