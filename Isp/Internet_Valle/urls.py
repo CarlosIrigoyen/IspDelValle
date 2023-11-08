@@ -34,7 +34,7 @@ urlpatterns =[
     path('Detalle_Pago/<int:pk>',Detalle_PagoDetailView.as_view(), name="Detalle_Pago"),
 
 ################### adicionales ###################
-    path('crearAdicionales/',adicionalesCreateView.as_view(), name="adicionalesCrear"),
-    path('modificar/<int:pk>',adicionalesUpdateView.as_view(), name="modificaradicionales"),
-    path('adicionales/<int:pk>',adicionalesDetailView.as_view(), name="adicionales"),
+    path('crearAdicional/',AdicionalCreateView.as_view(), name="adicionalCrear"),
+    path('modificar/<int:pk>',AdicionalUpdateView.as_view(), name="modificaradicionales"),
+    path('adicional/<int:pk>',AdicionalDetailView.as_view(), name="adicional"),
 ]
