@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Internet_Valle',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -130,5 +131,5 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 LOGIN_REDIRECT_URL='/inicio/'
-LOGOUT_REDIRECT_URL='/login/'
-LOGIN_URL='/login/'
+LOGOUT_REDIRECT_URL = ''
+LOGIN_URL = '/login/'

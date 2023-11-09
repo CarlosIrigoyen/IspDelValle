@@ -1,29 +1,26 @@
-from django.shortcuts import render
-from django.views.generic.list import ListView
+#from django.shortcuts import render
+#from django.views.generic.list import ListView
 from .models import *
 from .forms import *
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.template import loader
-from django.http import HttpResponse
-from datetime import datetime  
-from django.contrib import messages
+from django.views.generic import DetailView, ListView
+#from django.contrib import messages
 
-from django.urls import reverse_lazy
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, redirect
+
 # Create your views here.
 
 ################### CLIENTE ###################
 
 class ClienteCreateView(CreateView):
     model = Cliente
-    #form_class = FormularioCliente
+    template_name = 'cliente_form.html'
+    form_class = ClienteForm
    # success_url = reverse_lazy('cliente:cliente_crear')
 
-    def get_context_data(self, **kwargs):
+    '''def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Cliente"
-        return context
+        return context'''
 
 class ClienteUpdateView(UpdateView):
     model = Cliente
@@ -35,17 +32,17 @@ class ClienteUpdateView(UpdateView):
         context['titulo'] = "Modificar Cliente"
         return context
     
-    def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Cliente modificada con éxito')
+    '''def form_valid(self, form):
+        #messages.add_message(self.request, messages.SUCCESS, 'Cliente modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
-        return super().form_invalid(form)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)'''
 
-class ClienteDetailView (DeleteView):
+class ClienteDetailView (DetailView):
     model = Cliente
 
     def get_context_data(self, **kwargs):
@@ -66,31 +63,31 @@ class ServicioCreateView(CreateView):
         return context
 
 class ServicioUpdateView(UpdateView):
-    model = Cliente
+    model = Servicio
     #form_class = FormularioServicio
    # success_url = reverse_lazy('servicio:servicio_crear')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Modificar Cliente"
+        context['titulo'] = "Modificar Servicio"
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Servicio Cliente con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'Servicio con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class ServicioDetailView (DeleteView):
-    model = Cliente
+class ServicioDetailView (DetailView):
+    model = Servicio
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Cliente"
+        context['titulo'] = "Servicio"
         return context
 
 
@@ -117,16 +114,16 @@ class EquipoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Equipo modificada con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'Equipo modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+       # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class EquipoDetailView (DeleteView):
+class EquipoDetailView (DetailView):
     model = Equipo
 
     def get_context_data(self, **kwargs):
@@ -156,16 +153,16 @@ class ContratoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Contrato modificada con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'Contrato modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class ContratoDetailView (DeleteView):
+class ContratoDetailView (DetailView):
     model = Contrato
 
     def get_context_data(self, **kwargs):
@@ -195,16 +192,16 @@ class PagoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'pago modificada con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'pago modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class PagoDetailView (DeleteView):
+class PagoDetailView (DetailView):
     model = Pago
 
     def get_context_data(self, **kwargs):
@@ -235,16 +232,16 @@ class Detalle_PagoUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'detalle de pago modificada con éxito')
+        #messages.add_message(self.request, messages.SUCCESS, 'detalle de pago modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+       # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class Detalle_PagoDetailView (DeleteView):
+class Detalle_PagoDetailView (DetailView):
     model = Detalle_Pago
 
     def get_context_data(self, **kwargs):
@@ -254,21 +251,21 @@ class Detalle_PagoDetailView (DeleteView):
    
     
 
-################### adicionales ###################
-class adicionalesCreateView(CreateView):
-    model = adicionales
-    #form_class = Formularioadicionales
-   # success_url = reverse_lazy('adicionales:adicionales_crear')
+################### Adicional ###################
+class AdicionalCreateView(CreateView):
+    model = Adicional
+    #form_class = FormularioAdicional
+   # success_url = reverse_lazy('adicional:adicional_crear')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Adicional"
         return context
 
-class adicionalesUpdateView(UpdateView):
-    model = adicionales
-    #form_class = Formularioadicionales
-   # success_url = reverse_lazy('adicionales:adicionales_crear')
+class AdicionalUpdateView(UpdateView):
+    model = Adicional
+    #form_class = FormularioAdicional
+   # success_url = reverse_lazy('adicional:adicional_crear')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -276,21 +273,21 @@ class adicionalesUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'adicional modificado con éxito')
+        #messages.add_message(self.request, messages.SUCCESS, 'adicional modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         print(form.non_field_errors())
-        messages.add_message(self.request, messages.ERROR, form.errors)
+        #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class adicionalesDetailView (DeleteView):
-    model = adicionales
+class AdicionalDetailView (DetailView):
+    model = Adicional
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "detalle adicional"
+        context['titulo'] = "detalle Adicional"
         return context
    
    
