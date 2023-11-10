@@ -13,3 +13,5 @@ class IndexView(TemplateView):
     template_name ='home.html'
 
 
+class ExampleView(TemplateView):
+    template_name = 'listado_base.html'
