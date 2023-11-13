@@ -8,15 +8,10 @@ def home(request):
 def main(request):
     return render (request,"main.html")
 
-class LoginFormView(LoginView):
-    template_name = 'login.html'
 
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return reverse_lazy('index')
-        return super().dispatch(request, *args, **kwargs)
+class IndexView(TemplateView):
+    template_name ='home.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Iniciar sesión'
-        return context
+
+class ExampleView(TemplateView):
+    template_name = 'form_base.html'

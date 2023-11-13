@@ -3,6 +3,7 @@
 from .models import *
 from .forms import *
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import DetailView, ListView
 #from django.contrib import messages
 
 
@@ -41,7 +42,7 @@ class ClienteUpdateView(UpdateView):
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)'''
 
-class ClienteDetailView (DeleteView):
+class ClienteDetailView (DetailView):
     model = Cliente
 
     def get_context_data(self, **kwargs):
@@ -62,17 +63,17 @@ class ServicioCreateView(CreateView):
         return context
 
 class ServicioUpdateView(UpdateView):
-    model = Cliente
+    model = Servicio
     #form_class = FormularioServicio
    # success_url = reverse_lazy('servicio:servicio_crear')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Modificar Cliente"
+        context['titulo'] = "Modificar Servicio"
         return context
     
     def form_valid(self, form):
-       # messages.add_message(self.request, messages.SUCCESS, 'Servicio Cliente con éxito')
+       # messages.add_message(self.request, messages.SUCCESS, 'Servicio con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -81,12 +82,12 @@ class ServicioUpdateView(UpdateView):
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class ServicioDetailView (DeleteView):
-    model = Cliente
+class ServicioDetailView (DetailView):
+    model = Servicio
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Cliente"
+        context['titulo'] = "Servicio"
         return context
 
 
@@ -122,7 +123,7 @@ class EquipoUpdateView(UpdateView):
        # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class EquipoDetailView (DeleteView):
+class EquipoDetailView (DetailView):
     model = Equipo
 
     def get_context_data(self, **kwargs):
@@ -161,7 +162,7 @@ class ContratoUpdateView(UpdateView):
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class ContratoDetailView (DeleteView):
+class ContratoDetailView (DetailView):
     model = Contrato
 
     def get_context_data(self, **kwargs):
@@ -200,7 +201,7 @@ class PagoUpdateView(UpdateView):
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class PagoDetailView (DeleteView):
+class PagoDetailView (DetailView):
     model = Pago
 
     def get_context_data(self, **kwargs):
@@ -240,7 +241,7 @@ class Detalle_PagoUpdateView(UpdateView):
        # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class Detalle_PagoDetailView (DeleteView):
+class Detalle_PagoDetailView (DetailView):
     model = Detalle_Pago
 
     def get_context_data(self, **kwargs):
@@ -250,21 +251,21 @@ class Detalle_PagoDetailView (DeleteView):
    
     
 
-################### adicionales ###################
-class adicionalesCreateView(CreateView):
-    model = adicionales
-    #form_class = Formularioadicionales
-   # success_url = reverse_lazy('adicionales:adicionales_crear')
+################### Adicional ###################
+class AdicionalCreateView(CreateView):
+    model = Adicional
+    #form_class = FormularioAdicional
+   # success_url = reverse_lazy('adicional:adicional_crear')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Adicional"
         return context
 
-class adicionalesUpdateView(UpdateView):
-    model = adicionales
-    #form_class = Formularioadicionales
-   # success_url = reverse_lazy('adicionales:adicionales_crear')
+class AdicionalUpdateView(UpdateView):
+    model = Adicional
+    #form_class = FormularioAdicional
+   # success_url = reverse_lazy('adicional:adicional_crear')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -281,12 +282,12 @@ class adicionalesUpdateView(UpdateView):
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-class adicionalesDetailView (DeleteView):
-    model = adicionales
+class AdicionalDetailView (DetailView):
+    model = Adicional
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "detalle adicional"
+        context['titulo'] = "detalle Adicional"
         return context
    
    
