@@ -33,7 +33,7 @@ urlpatterns =[
     path('modificar/<int:pk>',Detalle_PagoUpdateView.as_view(), name="modificarDetalle_Pago"),
     path('Detalle_Pago/<int:pk>',Detalle_PagoDetailView.as_view(), name="Detalle_Pago"),
 
-################### adicionales ###################
+################### Adicional ###################
     path('crearAdicional/',AdicionalCreateView.as_view(), name="adicionalCrear"),
     path('modificar/<int:pk>',AdicionalUpdateView.as_view(), name="modificaradicionales"),
     path('adicional/<int:pk>',AdicionalDetailView.as_view(), name="adicional"),
