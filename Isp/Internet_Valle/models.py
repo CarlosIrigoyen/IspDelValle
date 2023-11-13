@@ -4,12 +4,12 @@ from django.db import models
 class Cliente(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
-    dni = models.PositiveSmallIntegerField(max_length=8,unique=True)
+    dni = models.PositiveSmallIntegerField(unique=True)
     telefono = models.CharField(max_length=11)
     mail = models.EmailField(max_length = 254) 
 
 class Servicio (models.Model):
-    velocidad = models.IntegerField(max_length=4)
+    velocidad = models.IntegerField()
     fecha_fin = models.DateField(blank=True)
     monto = models.DecimalField(help_text="costo del servicio", max_digits=10, decimal_places=2)
 

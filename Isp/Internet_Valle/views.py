@@ -24,7 +24,7 @@ class ClienteCreateView(CreateView):
 
 class ClienteUpdateView(UpdateView):
     model = Cliente
-    #form_class = FormularioCliente
+    form_class = ClienteForm
     #success_url = reverse_lazy('cliente:cliente_listar')
 
     def get_context_data(self, **kwargs):
@@ -54,7 +54,8 @@ class ClienteDetailView (DetailView):
 
 class ServicioCreateView(CreateView):
     model = Servicio
-    #form_class = FormularioServicio
+    form_class = ServicioForm
+    template_name = 'servicio_form.html'
    # success_url = reverse_lazy('servicio:servicio_crear')
 
     def get_context_data(self, **kwargs):
@@ -95,7 +96,8 @@ class ServicioDetailView (DetailView):
 
 class EquipoCreateView(CreateView):
     model = Equipo
-    #form_class = FormularioEquipo
+    form_class = EquipoForm
+    template_name = "equipo_form.html"
    # success_url = reverse_lazy('equipo:equipo_crear')
 
     def get_context_data(self, **kwargs):
@@ -134,8 +136,8 @@ class EquipoDetailView (DetailView):
  ################### Contrato ###################
 class ContratoCreateView(CreateView):
     model = Contrato
-    #form_class = FormularioContrato
-   # success_url = reverse_lazy('contrato:contrato_crear')
+    form_class = ContratoForm
+    template_name = "contrato_form.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -173,8 +175,8 @@ class ContratoDetailView (DetailView):
 ################### Pago ###################
 class PagoCreateView(CreateView):
     model = Pago
-    #form_class = FormularioPago
-   # success_url = reverse_lazy('pago:pago_crear')
+    form_class = PagoForm
+    template_name = "pago_form.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
