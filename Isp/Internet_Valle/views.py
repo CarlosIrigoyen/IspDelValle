@@ -215,8 +215,8 @@ class PagoDetailView (DetailView):
 
 class Detalle_PagoCreateView(CreateView):
     model = Detalle_Pago
-    #form_class = FormularioDetalle_Pago
-   # success_url = reverse_lazy('detalle_pago:detalle_pago_crear')
+    #form_class = AdicionalForm
+    #template_name = "adicional_form.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -256,8 +256,8 @@ class Detalle_PagoDetailView (DetailView):
 ################### Adicional ###################
 class AdicionalCreateView(CreateView):
     model = Adicional
-    #form_class = FormularioAdicional
-   # success_url = reverse_lazy('adicional:adicional_crear')
+    form_class = AdicionalForm
+    template_name = "adicional_form.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
