@@ -6,7 +6,7 @@ urlpatterns =[
  ################### CLIENTE ###################
     path('crearCliente/',ClienteCreateView.as_view(), name="ClienteCrear"),
     path('modificar/<int:pk>',ClienteUpdateView.as_view(), name="modificarCliente"),
-    path('Cliente/<int:pk>',ClienteDetailView.as_view(), name="Cliente"),
+    path('clienteListar/',ClienteListar.as_view(),name="ClienteListar"),
 
  ################### Servicio ###################
     path('crearServicio/',ServicioCreateView.as_view(), name="ServicioCrear"),

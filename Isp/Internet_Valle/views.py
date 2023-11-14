@@ -1,5 +1,7 @@
 #from django.shortcuts import render
 #from django.views.generic.list import ListView
+from django.urls import reverse_lazy
+
 from .models import *
 from .forms import *
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -15,12 +17,7 @@ class ClienteCreateView(CreateView):
     model = Cliente
     template_name = 'cliente_form.html'
     form_class = ClienteForm
-   # success_url = reverse_lazy('cliente:cliente_crear')
-
-    '''def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Alta de Cliente"
-        return context'''
+    success_url = reverse_lazy('apli:ClienteListar')
 
 class ClienteUpdateView(UpdateView):
     model = Cliente
@@ -31,25 +28,15 @@ class ClienteUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar Cliente"
         return context
-    
-    '''def form_valid(self, form):
-        #messages.add_message(self.request, messages.SUCCESS, 'Cliente modificada con éxito')
-        return super().form_valid(form)
 
-    def form_invalid(self, form):
-        print(form.errors)
-        print(form.non_field_errors())
-        #messages.add_message(self.request, messages.ERROR, form.errors)
-        return super().form_invalid(form)'''
-
-class ClienteDetailView (DetailView):
-    model = Cliente
+class ClienteListar(ListView):
+    model=Cliente
+    template_name = 'cliente_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Cliente"
+        context['object_list'] = Cliente.objects.all()
         return context
-
 ################### Servicio ###################
 
 class ServicioCreateView(CreateView):
