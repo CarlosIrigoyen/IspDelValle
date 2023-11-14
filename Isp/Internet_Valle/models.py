@@ -45,7 +45,7 @@ class Detalle_Pago (models.Model):
     pago = models.ForeignKey(Pago, related_name="DetalleDePago",on_delete=models.CASCADE)
     renglon = models.CharField(max_length=500)
     costo =  models.DecimalField(help_text="costo", max_digits=10, decimal_places=2)
-    adicional = models.ForeignKey(Adicional, null=True, blank=True, on_delete=models.CASCADE)
+    adicional = models.ForeignKey(Adicional, null=True, blank=True, on_delete=models.CASCADE )
 
 
 

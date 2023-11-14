@@ -1,2 +1,22 @@
-{% extends 'base2.html' %}
+{% extends 'listado_base.html' %}
 {% load static %}
+{% block thead %}
+
+{% endblock thead %}
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Dni</th>
+        <th>Telefono</th>
+        <th>Email</th>
+    </tr>
+{% block tbody %}
+    {% for c in object_list  %}
+        <tr>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.apellido }}</td>
+            <td>{{ c.telefono }}</td>
+            <td>{{ c.email }}</td>
+        </tr>
+    {% endfor %}
+{% endblock tbody %}

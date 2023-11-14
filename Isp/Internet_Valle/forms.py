@@ -10,8 +10,15 @@ from .models import Cliente, Servicio,Equipo, Contrato, Pago, Adicional
 
 class ClienteForm (forms.ModelForm):
     class Meta:
-       model = Cliente  
-       fields = '__all__'   
+       model = Cliente
+       fields = ['nombre', 'apellido', 'dni', 'telefono', 'mail']
+       widgets = {
+           'nombre': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Nombre'}),
+           'apellido': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Apellido'}),
+           'dni': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Documento'}),
+           'telefono': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Telefono'}),
+           'mail': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Email'}),
+       }
 
 class ServicioForm (forms.ModelForm):
     class Meta:
