@@ -1,0 +1,27 @@
+{% extends 'listado_base.html' %}
+{% load static %}
+{% block thead %}
+    <tr>
+        <th>Cliente</th>
+        <th>Servicio</th>
+        <th>Direccion</th>
+        <th>Feha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Fecha de desconexion</th>
+        <th>Localidad</th>
+    </tr>
+{% endblock thead %}
+
+{% block tbody %}
+    {% for c in object_list  %}
+        <tr>
+            <td>{{ c.cliente }}</td>
+            <td>{{ c.servicio }}</td>
+            <td>{{ c.direccion }}</td>
+           <td>{{ c.fecha_inicio }}</td>
+           <td>{{ c.fecha_fin }}</td>
+           <td>{{ c.fecha_desconexion }}</td>
+           <td>{{ c.localidad }}</td>
+        </tr>
+    {% endfor %}
+{% endblock tbody %}

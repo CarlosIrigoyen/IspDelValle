@@ -78,7 +78,15 @@ class ServicioDetailView (DetailView):
         context['titulo'] = "Servicio"
         return context
 
+class ServicioListar(ListView):
+    model=Servicio
+    template_name = 'Servicio_list.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Servicio.objects.all()
+        return context
+    
 ################### Equipo ###################
 
 class EquipoCreateView(CreateView):
@@ -119,7 +127,15 @@ class EquipoDetailView (DetailView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Equipo"
         return context
-    
+
+class EquipoListar(ListView):
+    model=Equipo
+    template_name = 'equipo_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Equipo.objects.all()
+        return context    
  ################### Contrato ###################
 class ContratoCreateView(CreateView):
     model = Contrato
@@ -158,6 +174,15 @@ class ContratoDetailView (DetailView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Contrato"
         return context
+
+class ContratoListar(ListView):
+    model=Contrato
+    template_name = 'contrato_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Contrato.objects.all()
+        return context      
     
 ################### Pago ###################
 class PagoCreateView(CreateView):

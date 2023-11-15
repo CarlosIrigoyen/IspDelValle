@@ -1,0 +1,19 @@
+{% extends 'listado_base.html' %}
+{% load static %}
+{% block thead %}
+    <tr>
+        <th>Nombre</th>
+        <th>Fecha fin</th>
+        <th>Descripcion</th>
+    </tr>
+{% endblock thead %}
+
+{% block tbody %}
+    {% for c in object_list  %}
+        <tr>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.fecha_fin }}</td>
+            <td>{{ c.descripcion }}</td>
+        </tr>
+    {% endfor %}
+{% endblock tbody %}

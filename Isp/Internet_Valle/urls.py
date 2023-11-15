@@ -12,17 +12,19 @@ urlpatterns =[
     path('crearServicio/',ServicioCreateView.as_view(), name="ServicioCrear"),
     path('modificar/<int:pk>',ServicioUpdateView.as_view(), name="modificarServicio"),
     path('Servicio/<int:pk>',ServicioDetailView.as_view(), name="Servicio"),
+    path('ServicioListar/',ServicioListar.as_view(),name="ServicioListar"),
 
  ################### Equipo ###################
     path('crearEquipo/',EquipoCreateView.as_view(), name="EquipoCrear"),
     path('modificar/<int:pk>',EquipoUpdateView.as_view(), name="modificarEquipo"),
     path('Equipo/<int:pk>',EquipoDetailView.as_view(), name="Equipo"),
+    path('EquipoListar/',EquipoListar.as_view(),name="EquipoListar"),
 
  ################### Contrato ###################
     path('crearContrato/',ContratoCreateView.as_view(), name="ContratoCrear"),
     path('modificar/<int:pk>',ContratoUpdateView.as_view(), name="modificarContrato"),
     path('Contrato/<int:pk>',ContratoDetailView.as_view(), name="Contrato"),
-
+    path('ContratoListar/',ContratoListar.as_view(),name="ContratoListar"),
  ################### Pago ###################
     path('crearPago/',PagoCreateView.as_view(), name="PagoCrear"),
     path('modificar/<int:pk>',PagoUpdateView.as_view(), name="modificarPago"),
