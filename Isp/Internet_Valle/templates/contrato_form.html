@@ -1,23 +1,45 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <h1>Generar contrato</h1>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
-</html>
+{% extends 'form_base.html' %}
+{% load static %}
+{% block nombre %}Alta De Contrato{% endblock nombre %}
+{% block nombre2 %}Registrar Contrato{% endblock nombre2 %}
+{% block campos %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                {{ form.cliente }}
+            </div>
+            <div class="col-sm-6">
+                {{ form.servicio }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                {{ form.direccion }}
+            </div>
+            <div class="col-sm-6">
+                {{ form.localidad }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                {{ form.fecha_inicio }}
+            </div>
+            <div class="col-sm-6">
+                {{ form.fecha_fin }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                {{ form.fecha_desconexion }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-center">
+            <i class="fas fa-save"></i> Guardar registro
+        </button>
+    </form>
+{% endblock campos %}

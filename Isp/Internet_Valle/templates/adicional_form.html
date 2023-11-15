@@ -1,0 +1,22 @@
+{% extends 'form_base.html' %}
+{% load static %}
+{% block nombre %}Alta De Cliente{% endblock nombre %}
+{% block nombre2 %}Registrar Cliente{% endblock nombre2 %}
+{% block campos %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                {{ form.monto }}
+            </div>
+            <div class="col-sm-6">
+                {{ form.descripcion }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-center">
+            <i class="fas fa-save"></i> Guardar registro
+        </button>
+    </form>
+{% endblock campos %}
