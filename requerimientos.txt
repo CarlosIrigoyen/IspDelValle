@@ -4,4 +4,4 @@ sqlparse==0.4.4
 tzdata==2023.3
 django-crispy-forms==1.14.0
 crispy-bootstrap5==0.7
-django-import-export=3.3.3
+django-import-export==3.3.3
