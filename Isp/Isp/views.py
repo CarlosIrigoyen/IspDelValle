@@ -14,4 +14,4 @@ class IndexView(TemplateView):
 
 
 class ExampleView(TemplateView):
-    template_name = 'form_base.html'
+    template_name = 'delate_base.html'
