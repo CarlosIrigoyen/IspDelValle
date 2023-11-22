@@ -3,7 +3,6 @@
 {% block thead %}
     <tr>
         <th>velocidad</th>
-        <th>fecha fin</th>
         <th>monto</th>
     </tr>
 {% endblock thead %}
@@ -12,7 +11,6 @@
     {% for c in object_list  %}
         <tr>
             <td>{{ c.velocidad }}</td>
-            <td>{{ c.fecha_fin }}</td>
             <td>{{ c.monto }}</td>
         </tr>
     {% endfor %}

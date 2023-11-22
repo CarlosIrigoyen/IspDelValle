@@ -10,7 +10,7 @@ class Cliente(models.Model):
 
 class Servicio (models.Model):
     velocidad = models.IntegerField()
-    fecha_fin = models.DateField(blank=True)
+    fecha_fin = models.DateField(blank=True,null=True),
     monto = models.DecimalField(help_text="costo del servicio", max_digits=10, decimal_places=2)
 
 class Equipo (models.Model):

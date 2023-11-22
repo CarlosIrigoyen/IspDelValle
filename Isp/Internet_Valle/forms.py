@@ -23,10 +23,9 @@ class ClienteForm (forms.ModelForm):
 class ServicioForm (forms.ModelForm):
     class Meta:
        model = Servicio  
-       fields = '__all__'   
+       fields = ['velocidad', 'monto']
        widgets = {
            'velocidad': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Velocidad'}),
-           'fecha_fin': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha fin'}),
            'monto': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Monto'}),
        }
 

@@ -43,7 +43,7 @@ class ServicioCreateView(CreateView):
     model = Servicio
     form_class = ServicioForm
     template_name = 'servicio_form.html'
-   # success_url = reverse_lazy('servicio:servicio_crear')
+    success_url = reverse_lazy('apli:ServicioListar')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
