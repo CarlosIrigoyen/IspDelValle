@@ -39,4 +39,7 @@ urlpatterns =[
     path('crearAdicional/',AdicionalCreateView.as_view(), name="adicionalCrear"),
     path('modificar/<int:pk>',AdicionalUpdateView.as_view(), name="modificaradicionales"),
     path('adicional/<int:pk>',AdicionalDetailView.as_view(), name="adicional"),
+################### Localidad ###################
+    path('crearLocalidad/',LocalidadCreateView.as_view(), name="localidadCrear"),
+    path('LocalidadListar/',LocalidadListar.as_view(),name="LocalidadListar"),
 ]

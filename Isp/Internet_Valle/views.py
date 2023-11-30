@@ -141,7 +141,18 @@ class ContratoCreateView(CreateView):
     model = Contrato
     form_class = ContratoForm
     template_name = "contrato_form.html"
+    success_url = reverse_lazy('apli:ContratoListar')
 
+    def form_valid(self, form):
+        # Asociar cliente, servicio y localidad antes de guardar el contrato y asegura que la fecha de desconexion sea null
+        form.instance.cliente = form.cleaned_data['cliente']
+        form.instance.servicio = form.cleaned_data['servicio']
+        form.instance.localidad = form.cleaned_data['localidad']
+        if not form.cleaned_data['fecha_desconexion']:
+            form.instance.fecha_desconexion = None
+        
+        return super().form_valid(form)
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Contrato"
@@ -303,5 +314,20 @@ class AdicionalDetailView (DetailView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "detalle Adicional"
         return context
-   
-   
+
+################### Adicional ################### 
+
+class LocalidadCreateView(CreateView):
+    model = Localidad
+    template_name = 'localidad_form.html'
+    form_class = LocalidadForm
+    success_url = reverse_lazy('apli:LocalidadListar')
+
+class LocalidadListar(ListView):
+    model=Localidad
+    template_name = 'localidad_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Localidad.objects.all()
+        return context

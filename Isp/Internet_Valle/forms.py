@@ -4,9 +4,10 @@ from pyexpat import model
 #from tkinter.ttk import Widget
 from django import forms
 from django.forms import ValidationError
-from .models import Cliente, Servicio,Equipo, Contrato, Pago, Adicional
-
-
+from .models import Cliente, Servicio,Equipo, Contrato, Pago, Adicional, Localidad
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Submit, HTML
+from crispy_forms.layout import Layout, Fieldset, Div, HTML
 
 class ClienteForm (forms.ModelForm):
     class Meta:
@@ -39,20 +40,30 @@ class EquipoForm (forms.ModelForm):
            'descripcion': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Descripcion'}),
        }     
 
-class ContratoForm (forms.ModelForm):
-    class Meta:
-       model = Contrato  
-       fields = '__all__'     
-       widgets = {
-           'cliente': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Cliente'}),
-           'servicio': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Servicio'}),
-           'direccion': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Direccion'}),
-           'fecha_inicio': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha Inicio'}),
-           'fecha_fin': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha Fin'}),
-           'fecha_desconexion': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha Desconexion'}),
-           'localidad': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Localidad'}),
-       }     
 
+class ContratoForm (forms.ModelForm):
+
+    class Meta:
+        model = Contrato  
+        fields = '__all__'     
+        widgets = {
+           
+           'direccion': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Direccion'}),
+           'fecha_inicio': forms.DateInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha Inicio','type':'date'}),
+           'fecha_fin': forms.DateInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha Fin','type':'date'}),
+          } 
+   
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['cliente'].queryset = Cliente.objects.all()
+        self.fields['servicio'].queryset = Servicio.objects.all()
+        self.fields['localidad'].queryset = Localidad.objects.all()
+    
+        
+   
+ 
+
+       
 class PagoForm (forms.ModelForm):
     class Meta:
        model = Pago  
@@ -73,4 +84,12 @@ class AdicionalForm (forms.ModelForm):
            'monto': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Monto'}),
            'descripcion': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Descripcion'}),
         }
-      
+    
+
+class LocalidadForm (forms.ModelForm):
+    class Meta:
+       model = Localidad
+       fields = '__all__' 
+       widgets = {
+           'nombre': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Nombre'}),
+           }

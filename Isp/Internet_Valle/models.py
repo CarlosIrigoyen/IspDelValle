@@ -8,10 +8,16 @@ class Cliente(models.Model):
     telefono = models.CharField(max_length=11)
     mail = models.EmailField(max_length = 254) 
 
+    def __str__(self):
+        return f"{self.nombre}, {self.apellido}"
+
 class Servicio (models.Model):
     velocidad = models.IntegerField()
     fecha_fin = models.DateField(blank=True,null=True),
     monto = models.DecimalField(help_text="costo del servicio", max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.velocidad}"
 
 class Equipo (models.Model):
     nombre = models.CharField(max_length=40)
@@ -21,15 +27,20 @@ class Equipo (models.Model):
 class Localidad (models.Model): 
     nombre = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.nombre}"
+
 class Contrato (models.Model):
     cliente = models.ForeignKey(Cliente, related_name="contrato",on_delete=models.CASCADE)
     servicio = models.ForeignKey(Servicio,on_delete=models.CASCADE)
     direccion = models.CharField(max_length=40)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField(blank=True)
-    fecha_desconexion = models.DateField(blank=True)
+    fecha_desconexion = models.DateField(blank=True, null=True)
     localidad = models.ForeignKey(Localidad, related_name="localidad", on_delete=models.CASCADE)
 
+    
+    
 class Pago (models.Model):
     contrato = models.ForeignKey(Contrato, related_name="pago",on_delete=models.CASCADE)
     monto_total =  models.DecimalField(help_text="monto total del pago", max_digits=10, decimal_places=2)
