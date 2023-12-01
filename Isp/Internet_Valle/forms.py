@@ -33,10 +33,9 @@ class ServicioForm (forms.ModelForm):
 class EquipoForm (forms.ModelForm):
     class Meta:
        model = Equipo  
-       fields = '__all__'     
+       fields = ['nombre', 'descripcion'] 
        widgets = {
            'nombre': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Nombre'}),
-           'fecha_fin': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha fin'}),
            'descripcion': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Descripcion'}),
        }     
 
@@ -47,10 +46,8 @@ class ContratoForm (forms.ModelForm):
         model = Contrato  
         fields = '__all__'     
         widgets = {
-           
            'direccion': forms.TextInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Direccion'}),
            'fecha_inicio': forms.DateInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha Inicio','type':'date'}),
-           'fecha_fin': forms.DateInput(attrs={'class': 'form-control form-control-user', 'placeholder': 'Fecha Fin','type':'date'}),
           } 
    
     def __init__(self, *args, **kwargs):
@@ -58,7 +55,7 @@ class ContratoForm (forms.ModelForm):
         self.fields['cliente'].queryset = Cliente.objects.all()
         self.fields['servicio'].queryset = Servicio.objects.all()
         self.fields['localidad'].queryset = Localidad.objects.all()
-    
+        self.fields['equipo'].queryset = Equipo.objects.all()
         
    
  

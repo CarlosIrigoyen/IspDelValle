@@ -93,7 +93,7 @@ class EquipoCreateView(CreateView):
     model = Equipo
     form_class = EquipoForm
     template_name = "equipo_form.html"
-   # success_url = reverse_lazy('equipo:equipo_crear')
+    success_url = reverse_lazy('apli:EquipoListar')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -148,8 +148,10 @@ class ContratoCreateView(CreateView):
         form.instance.cliente = form.cleaned_data['cliente']
         form.instance.servicio = form.cleaned_data['servicio']
         form.instance.localidad = form.cleaned_data['localidad']
+        form.instance.equipo = form.cleaned_data['equipo']
         if not form.cleaned_data['fecha_desconexion']:
             form.instance.fecha_desconexion = None
+            form.instance.fecha_fin = None
         
         return super().form_valid(form)
     
