@@ -7,18 +7,19 @@ from .forms import *
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView, ListView
 #from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
 ################### CLIENTE ###################
-
+@login_required
 class ClienteCreateView(CreateView):
     model = Cliente
     template_name = 'cliente_form.html'
     form_class = ClienteForm
     success_url = reverse_lazy('apli:ClienteListar')
-
+@login_required
 class ClienteUpdateView(UpdateView):
     model = Cliente
     form_class = ClienteForm
@@ -28,7 +29,7 @@ class ClienteUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar Cliente"
         return context
-
+@login_required
 class ClienteListar(ListView):
     model=Cliente
     template_name = 'cliente_list.html'
@@ -38,7 +39,7 @@ class ClienteListar(ListView):
         context['object_list'] = Cliente.objects.all()
         return context
 ################### Servicio ###################
-
+@login_required
 class ServicioCreateView(CreateView):
     model = Servicio
     form_class = ServicioForm
@@ -49,7 +50,7 @@ class ServicioCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Servicio"
         return context
-
+@login_required
 class ServicioUpdateView(UpdateView):
     model = Servicio
     #form_class = FormularioServicio
@@ -69,7 +70,7 @@ class ServicioUpdateView(UpdateView):
         print(form.non_field_errors())
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
-
+@login_required
 class ServicioDetailView (DetailView):
     model = Servicio
 
@@ -77,7 +78,7 @@ class ServicioDetailView (DetailView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Servicio"
         return context
-
+@login_required
 class ServicioListar(ListView):
     model=Servicio
     template_name = 'Servicio_list.html'
@@ -88,7 +89,7 @@ class ServicioListar(ListView):
         return context
     
 ################### Equipo ###################
-
+@login_required
 class EquipoCreateView(CreateView):
     model = Equipo
     form_class = EquipoForm
@@ -99,7 +100,7 @@ class EquipoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Equipo"
         return context
-
+@login_required
 class EquipoUpdateView(UpdateView):
     model = Equipo
      #form_class = FormularioEquipo
@@ -119,7 +120,7 @@ class EquipoUpdateView(UpdateView):
         print(form.non_field_errors())
        # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
-
+@login_required
 class EquipoDetailView (DetailView):
     model = Equipo
 
@@ -127,7 +128,7 @@ class EquipoDetailView (DetailView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Equipo"
         return context
-
+@login_required
 class EquipoListar(ListView):
     model=Equipo
     template_name = 'equipo_list.html'
@@ -137,6 +138,7 @@ class EquipoListar(ListView):
         context['object_list'] = Equipo.objects.all()
         return context    
  ################### Contrato ###################
+@login_required
 class ContratoCreateView(CreateView):
     model = Contrato
     form_class = ContratoForm
@@ -159,7 +161,7 @@ class ContratoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Contrato"
         return context
-
+@login_required
 class ContratoUpdateView(UpdateView):
     model = Contrato
     #form_class = FormularioContrato
@@ -179,7 +181,7 @@ class ContratoUpdateView(UpdateView):
         print(form.non_field_errors())
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
-
+@login_required
 class ContratoDetailView (DetailView):
     model = Contrato
 
@@ -187,7 +189,7 @@ class ContratoDetailView (DetailView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Contrato"
         return context
-
+@login_required
 class ContratoListar(ListView):
     model=Contrato
     template_name = 'contrato_list.html'
@@ -198,6 +200,7 @@ class ContratoListar(ListView):
         return context      
     
 ################### Pago ###################
+@login_required
 class PagoCreateView(CreateView):
     model = Pago
     form_class = PagoForm
@@ -207,7 +210,7 @@ class PagoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Pago"
         return context
-
+@login_required
 class PagoUpdateView(UpdateView):
     model = Pago
     #form_class = FormularioPago
@@ -227,7 +230,7 @@ class PagoUpdateView(UpdateView):
         print(form.non_field_errors())
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
-
+@login_required
 class PagoDetailView (DetailView):
     model = Pago
 
@@ -237,7 +240,7 @@ class PagoDetailView (DetailView):
         return context
 
 ################### Detalle_Pago ###################
-
+@login_required
 class Detalle_PagoCreateView(CreateView):
     model = Detalle_Pago
     #form_class = AdicionalForm
@@ -247,7 +250,7 @@ class Detalle_PagoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Detalle de Pago"
         return context
-
+@login_required
 class Detalle_PagoUpdateView(UpdateView):
     model = Detalle_Pago
     #form_class = FormularioDetalle_Pago
@@ -267,7 +270,7 @@ class Detalle_PagoUpdateView(UpdateView):
         print(form.non_field_errors())
        # messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
-
+@login_required
 class Detalle_PagoDetailView (DetailView):
     model = Detalle_Pago
 
@@ -279,6 +282,7 @@ class Detalle_PagoDetailView (DetailView):
     
 
 ################### Adicional ###################
+@login_required
 class AdicionalCreateView(CreateView):
     model = Adicional
     form_class = AdicionalForm
@@ -288,7 +292,7 @@ class AdicionalCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Alta de Adicional"
         return context
-
+@login_required
 class AdicionalUpdateView(UpdateView):
     model = Adicional
     #form_class = FormularioAdicional
@@ -308,7 +312,7 @@ class AdicionalUpdateView(UpdateView):
         print(form.non_field_errors())
         #messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
-
+@login_required
 class AdicionalDetailView (DetailView):
     model = Adicional
 
@@ -318,13 +322,13 @@ class AdicionalDetailView (DetailView):
         return context
 
 ################### Adicional ################### 
-
+@login_required
 class LocalidadCreateView(CreateView):
     model = Localidad
     template_name = 'localidad_form.html'
     form_class = LocalidadForm
     success_url = reverse_lazy('apli:LocalidadListar')
-
+@login_required
 class LocalidadListar(ListView):
     model=Localidad
     template_name = 'localidad_list.html'
